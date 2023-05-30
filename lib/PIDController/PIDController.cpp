@@ -13,6 +13,10 @@ PIDController::PIDController(float t_kp, float t_ki, float t_kd, int t_frequency
 	m_kd = t_kd;
 };
 
+PIDController::~PIDController()
+{
+};
+
 /// @brief Get the value computed by the PID Controller on each loop.
 /// @param t_currentState The system's current state vector, fed back by the sensors.
 /// @param t_targetState The system's target state (reference).
