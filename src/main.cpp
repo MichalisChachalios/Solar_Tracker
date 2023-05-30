@@ -16,7 +16,7 @@ PIDController HorizontalController =  PIDController(4, 0, 0,0.1);
 
 void setup()
 {
-  
+  delay(500);
 }
 
 void loop()
