@@ -22,25 +22,21 @@ void setup()
 void loop()
 {
 
-  int ULValue = analogRead(UpperLeftPhotoResistor); /// Read Voltage Drop from Upper Left
-  int URValue = analogRead(UpperRightPhotoResistor); /// Read Voltage Drop from Upper Right
-  int LLValue = analogRead(LowerLeftPhotoResistor); /// Read Voltage Drop from Lower Left
-  int LRValue = analogRead(LowerRightPhotoResistor); /// Read Voltage Drop from Lower Right
+  int uLValue = analogRead(UpperLeftPhotoResistor); /// Read Voltage Drop from Upper Left
+  int uRValue = analogRead(UpperRightPhotoResistor); /// Read Voltage Drop from Upper Right
+  int lLValue = analogRead(LowerLeftPhotoResistor); /// Read Voltage Drop from Lower Left
+  int lRValue = analogRead(LowerRightPhotoResistor); /// Read Voltage Drop from Lower Right
 
   ///SECTION Calc the mean of the values verticaly and horizonataly
-  int VelticalDif = (ULValue + URValue ) / 2 - (LLValue + LRValue ) / 2 ;
-  int HorizontalDif = (ULValue + LLValue ) / 2 - (URValue + LRValue ) / 2 ;
+  int velticalDif = (uLValue + uRValue ) / 2 - (lLValue + lRValue ) / 2 ;
+  int horizontalDif = (uLValue + lLValue ) / 2 - (uRValue + lRValue ) / 2 ;
 
-  ///SECTION Impliment the P controller
-  float VelticalControllerOutput = VelticalController.getComputedVal(0,VelticalDif);
-  float HorizontalControllerOutput = VelticalController.getComputedVal(0,HorizontalDif);
+  ///SECTION Implement the P controller
+  float velticalControllerOutput = VelticalController.getComputedVal(0,velticalDif);
+  float horizontalControllerOutput = VelticalController.getComputedVal(0,horizontalDif);
 
   ///SECTION Drive the control signal
-  analogWrite(ServoVerical, VelticalControllerOutput);
-  analogWrite(ServoHorizontal, HorizontalControllerOutput);
-
-  
-  
-
+  analogWrite(ServoVerical, velticalControllerOutput);
+  analogWrite(ServoHorizontal, horizontalControllerOutput);
 
 }
